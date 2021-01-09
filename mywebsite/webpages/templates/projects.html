@@ -1,79 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>education</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Shahram Zaheri</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="education.html">Education</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="metallurgical%20experience.html">Metallurgical Experience</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="computer_projects.html">Computer Projects</a>
-                    </li>
-                    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Resume
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="resume.html">Metallurgist</a>
-                            <a class="dropdown-item" href="resume_computer_engineer.html">Computer Engineer</a>
-                            
-                        </div>
-                    </li>
-                    
-                </ul>
-            </div>
-    </nav>
-    <div class="container m-auto p-3 bg-light">
-        <p> Here are some of computer projects that I have done. </p>
-        
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Bouncing Ball</h5>
-                  <p class="card-text">I did this project using HTML canvas. I found <a href="https://www.youtube.com/watch?v=EO6OkltgudE"> this tutorial</a> useful for this project.</p>
-                <a href="bouncing_ball.html" class="btn btn-primary">go to bouncing ball</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Heat Transfer</h5>
-                <p class="card-text">Python has a package (seaborn.heatmap) for heat mapping, but I've done this project in JS with calculating color of the points manually.</p>
-                <a href="heat_flow.html" class="btn btn-primary"> go to heat transfer</a>
-              </div>
-            </div>
-          </div>
+{%extends 'base.html'%}
+from django.urls import path, include
+{%block content%}
+
+
+  <p> Here are some of computer projects that I have done. </p>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Bouncing Ball</h5>
+            <p class="card-text">I did this project using HTML canvas. I found <a href="https://www.youtube.com/watch?v=EO6OkltgudE"> this tutorial</a> useful for this project.</p>
+          <a href="{% url 'bouncing_ball' %}" class="btn btn-primary">go to bouncing ball</a>
         </div>
+      </div>
     </div>
-     <!-- Footer -->
-    <footer>
 
-        <div class="footer-copyright text-center py-3">©Shahram Zaheri, Last updated March 2019</div>
-        <!-- Copyright -->
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Heat Transfer</h5>
+          <p class="card-text">Python has a package (seaborn.heatmap) for heat mapping, but I've done this project in JS with calculating color of the points manually.</p>
+          <a href="{% url 'heat_flow'%}" class="btn btn-primary"> go to heat transfer</a>
+        </div>
+      </div>
+    </div>
 
-      </footer>
-      <!-- Footer -->
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Path Finder</h5>
+          <p class="card-text">In this project A* search is used 
+            to find the shortest path between selected cities. </p>
+          <a href="{% url 'path_finder' %}" class="btn btn-primary"> go to path finder</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{%endblock content%}
     
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
-</html>

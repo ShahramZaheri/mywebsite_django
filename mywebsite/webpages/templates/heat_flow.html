@@ -1,0 +1,56 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block content%}
+<h1 class="mx-auto"> heat flow</h1>
+    <p> This program models heat flow in a 10 x 10 array. Value of each cell represents temperature of that cell. Temperature of the border (i.e. <em>a<sub>ij</sub> where i=0,9 and j=0-9</em> and <em>a<sub>ij</sub> where i=1-8 and j=0,9</em>) is specified using the following form (all the cells in the border have the same temperature). Besides this, in the following form, a source (i.e. <em>ij where i=1-8 and j=1-8</em>) and its temperature is specified. Using these info, program iterates to calculate temperature of the other cells (i.e. cells other than the source and border). Here is the formula for the iterations:</p>
+    <p><em>a<sub>ij</sub> = 1/5(a<sub>ij</sub> + a<sub>i-1j</sub> + a<sub>i+1j</sub> + a<sub>ij-1</sub> + a<sub>ij+1</sub>)</em></p>
+    <p> Iterations stop when <em> &sum;( a<sub>ij</sub><sup>new</sup> - a<sub>ij</sub><sup>old</sup> ) <sup>2</sup> </em> is sufficiently small (~0.5).</p>
+    <form>
+        <div class="form-row">
+        <div class="form-group col-md-4">
+        <label for="source_x">x of source</label>
+        <select id="source_x" class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            </select>
+        </div>
+            
+        <div class="form-group col-md-4">
+        <label for="source_y">y of source</label>
+        <select id="source_y" class="form-control">
+            <option selected>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            </select>
+        </div>
+            
+        <div class="form-group col-md-4">
+            <label for="source_temp">temperature of source</label>
+            <input type="number" class="form-control" id="source_temp" placeholder="">
+        </div>
+            
+        <div class="form-group col-md-4">
+            <label for="border_temp">temperature of border</label>
+            <input type="number" class="form-control" id="border_temp" placeholder="">
+        </div>
+        </div>    
+        </form>
+    <button type="button" class="btn btn-primary" onclick="heat_flow()"> submit and run</button>
+    <div id="heat_flow">
+    <p>sum-error:</p>
+    <p id="error"> </p>
+    <p id="heat_table"> </p>
+    </div>
+
+{%endblock content%}

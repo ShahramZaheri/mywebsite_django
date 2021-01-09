@@ -1,0 +1,174 @@
+ {%extends 'base.html'%}
+{%load static%}
+
+<script src="js/canvas.js" onload="make_court()"></script>
+{% block content %}
+
+<img onload="make_court()">
+<h1> Bouncing Ball</h1>
+<p> Fill out the following form to create your own customized bouncing ball. However, before doing so, let's review a few things from high school physics.</p>
+<ol>
+    <li>Movement of the ball is modeled by two equations:
+        <em> x = x<sub>0</sub> + v<sub>x</sub>t</em> and <em> y = 1/2at<sup>2</sup> + v<sub>0y</sub>t + y<sub>0</sub></em> where values of x<sub>0</sub>, v<sub>x</sub>, v<sub>0y</sub>, and y<sub>0</sub> are entered in the form
+    </li>
+    <li>As the above mentioned equationos show, there is only acceleration in y direction and its value is constant <em> (a = 2) </em></li>
+    <li> Whenever the ball hits the horizontal walls or vertical walls, it's v<sub>x</sub> or v<sub>y</sub> is multiplied by a fraction factor (0.9) </li>
+    <li> For x axis and y-axis positive directions are rightward and downward, respectively</li>
+</ol>
+
+<form > 
+    <div class="form-row">
+    <div class="form-group col-md-4">
+    <label for="ball_color">Color of ball</label>
+    <select id="ball_color" class="form-control">
+        <option selected>blue</option>
+        <option>green</option>
+        <option>red</option>
+        </select>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="ball_radius">radius of ball</label>
+        <input type="number" class="form-control" id="ball_radius" placeholder="" onload="make_court()">
+    </div>
+    <div class="form-group col-md-4">
+        <label for="initial_x">initial x</label>
+        <input type="number" class="form-control" id="initial_x" placeholder="enter a value between 0 and 100">
+    </div>
+    <div class="form-group col-md-4">
+        <label for="initial_y">initial y</label>
+        <input type="number" class="form-control" id="initial_y" placeholder="enter a value between 0 and 100">
+    </div>
+    <div class="form-group col-md-4">
+        <label for="x-velocity">x-velocity</label>
+        <input type="number" class="form-control" id="x-velocity" placeholder="toward right is positive">
+    </div>
+    <div class="form-group col-md-4">
+        <label for="y-velocity">y-velocity</label>
+        <input type="number" class="form-control" id="y-velocity" placeholder="downward is positive">
+    </div>
+        
+    </div>
+    <button type="button" class="btn btn-primary mb-2" onclick="start_ball()"> submit info</button>
+</form>
+
+<canvas> </canvas>
+
+
+{%endblock content%} 
+
+<!-- 
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> bouncing ball</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+         <link href="css/final_project.css" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    </head>
+    
+    <body onload="make_court()">
+        
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Shahram Zaheri</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="education.html">Education</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="metallurgical%20experience.html">Metallurgical Experience</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="computer_projects.html">Computer Projects</a>
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Resume
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="resume.html">Metallurgist</a>
+                                <a class="dropdown-item" href="resume_computer_engineer.html">Computer Engineer</a>
+                                
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+        </nav>
+        <div class="container m-auto p-3 bg-light overflow-auto">
+            <h1> bouncing ball</h1>
+            <p> Fill out the following form to create your own customized bouncing ball. However, before doing so, let's review a few things from high school physics.</p>
+            <ol>
+                <li>Movement of the ball is modeled by two equations:
+                    <em> x = x<sub>0</sub> + v<sub>x</sub>t</em> and <em> y = 1/2at<sup>2</sup> + v<sub>0y</sub>t + y<sub>0</sub></em> where values of x<sub>0</sub>, v<sub>x</sub>, v<sub>0y</sub>, and y<sub>0</sub> are entered in the form
+                </li>
+                <li>As the above mentioned equationos show, there is only acceleration in y direction and its value is constant <em> (a = 2) </em></li>
+                <li> Whenever the ball hits the horizontal walls or vertical walls, it's v<sub>x</sub> or v<sub>y</sub> is multiplied by a fraction factor (0.9) </li>
+                <li> For x axis and y-axis positive directions are rightward and downward, respectively</li>
+            </ol>
+            
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                <label for="ball_color">Color of ball</label>
+                <select id="ball_color" class="form-control">
+                    <option selected>blue</option>
+                    <option>green</option>
+                    <option>red</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="ball_radius">radius of ball</label>
+                    <input type="number" class="form-control" id="ball_radius" placeholder="">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="initial_x">initial x</label>
+                    <input type="number" class="form-control" id="initial_x" placeholder="enter a value between 0 and 100">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="initial_y">initial y</label>
+                    <input type="number" class="form-control" id="initial_y" placeholder="enter a value between 0 and 100">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="x-velocity">x-velocity</label>
+                    <input type="number" class="form-control" id="x-velocity" placeholder="toward right is positive">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="y-velocity">y-velocity</label>
+                    <input type="number" class="form-control" id="y-velocity" placeholder="downward is positive">
+                </div>
+                 
+              </div>
+              <button type="button" class="btn btn-primary mb-2" onclick="start_ball()"> submit info</button>
+            </form>
+            
+                <canvas> </canvas>
+        
+        </div>
+        Footer 
+        <footer>
+
+            <div class="footer-copyright text-center py-3">©Shahram Zaheri, Last updated March 2019</div>
+             Copyright 
+
+          </footer>
+           Footer 
+        
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     <script src="js/canvas.js"></script>
+    </body>
+    
+</html> -->
