@@ -1,7 +1,7 @@
 {%extends 'base.html'%}
 {% load static %}
 {%block content%}
-    <h1 class="mx-auto"> Path Finder</h1>
+    <h1 class="mx-auto"> Path Finder</h1>       
     <p>
         User selects starting point and destination from the below lists which contain the top twenty 
         Canadian cities by population. A network of routes has been defined among these cities as shown below.
@@ -14,7 +14,8 @@
             {{form.as_p}}
             <input type="submit" value="Find the Path" class="btn btn-primary">
         </form>
-        <p>{{cities}}</p>
-        <p>{{cost}}</p>
+        <p class="mt-2">{{msg}}</p>
+        <p class="mb-2">{{cities}}</p>
+        <iframe src="https://www.google.com/maps/d/embed?mid=18d07yeRvfrhbOs6u3I4RHFlxBEN6imsw" width="640" height="480"></iframe>
 {%endblock content%}
         

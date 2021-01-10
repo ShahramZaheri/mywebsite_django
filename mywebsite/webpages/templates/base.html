@@ -1,4 +1,5 @@
 {% load static %}
+{% load active_link_tags %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +7,7 @@
     <link href="static/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body onload="make_court()">
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Shahram Zaheri</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,28 +15,13 @@
         </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'home'%}">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="education.html">Education</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="metallurgical%20experience.html">Metallurgical Experience</a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'projects'%}">Computer Projects</a>
+                    
+                    <li class="nav-item {% active_link 'home' 'active'%}">
+                        <a class="nav-link" href="{% url 'home'%}">Home <span class="sr-only"></span></a>
                     </li>
                     
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Resume
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="resume.html">Metallurgist</a>
-                            <a class="dropdown-item" href="resume_computer_engineer.html">Computer Engineer</a>
-                            
-                        </div> -->
+                    <li class="nav-item {% active_link 'projects' 'active'%}">
+                        <a class="nav-link" href="{% url 'projects'%}">Computer Projects</a>
                     </li>
                     
                 </ul>
@@ -50,7 +36,7 @@
 <!-- Footer -->
     <footer>
 
-        <div class="footer-copyright text-center py-3">©Shahram Zaheri, Last updated March 2019</div>
+        <div class="footer-copyright text-center py-3">©Shahram Zaheri, Last updated January 2021</div>
         <!-- Copyright -->
 
       </footer>

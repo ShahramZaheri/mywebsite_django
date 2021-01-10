@@ -43,25 +43,13 @@ class pathfinder (TemplateView):
                 cities = cities + result['list of cities'][i]
                 cities = cities + ' -> '
             cities = cities + result['list of cities'][-1]
+            if (start_point == destination):
+                message = "Sorry! start point and destinaiton cannot be the same city. Try again!"
+                cities = ""
+            else:
+                message = "The shortest path between " + start_point + " and " + destination + " is as below. Total distance of this path is "+ str(result['cost'])+ " KM."
 
-            args ={'title':self.page_title,'form':my_path_finder_form, 'cities': cities, 'cost': result['cost']}
+            args ={'title':self.page_title,'form':my_path_finder_form, 'cities': cities, 'msg': message}
         return render (request, self.template_name, args)
         
-#     start_point = form.cleaned_data['origin_city']
-#     destination = form.cleaned_data['dest_city']
-#             result=find_a_path(start_point,destination)
-#             print(result)
-#             data = { "result":True,"msg": result}
-#             data = dumps(data) 
-#             return render(request, 'main.html', {"data": data, 'form': form})
 
-#     # if a GET (or any other method) we'll create a blank form
-#     else:
-#         form = PathForm()
-    
-#     data = { "result": False, "msg": [""]}
-#     data = dumps(data) 
-#     return render(request, 'main.html', {"data": data, 'form': form},)
-
-
-#     return render (request, 'pathfinder.html')
