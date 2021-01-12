@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.views.generic import TemplateView
-from .forms import Path_finder_form
+from .forms import Path_finder_form, youtube_comment_analyzer_form
 from .methods import find_a_path
 
 # Create your views here.
@@ -20,6 +20,15 @@ def heat_flow (request):
     page_title = "heat transfer"
     args = {'title':page_title}
     return render(request, 'heat_flow.html', args)
+
+class youtube_comment_analyzer (TemplateView):
+    template_name = 'youtube.html'
+    page_title = "youtube comment analyzer"
+    
+    def get (self, request):
+        youtube_form = youtube_comment_analyzer_form()
+        args = {'title':self.page_title, 'form': youtube_form}
+        return render (request, self.template_name, args)
 
 class pathfinder (TemplateView):
     template_name = 'pathfinder.html'

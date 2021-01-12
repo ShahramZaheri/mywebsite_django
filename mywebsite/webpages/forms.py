@@ -7,6 +7,10 @@ f = CSVFILES_FOLDER+'adj_matrix.csv'
 adj_matrix = pd.read_csv(f)
 listOfCities=adj_matrix.columns.tolist()
 
+class youtube_comment_analyzer_form (forms.Form):
+    youtube_link= forms.CharField(label='Please enter youtube linke here',widget=forms.TextInput)
+
+
 class Path_finder_form (forms.Form):
     CITIES=[]
     len_list=len(listOfCities)

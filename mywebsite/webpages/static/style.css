@@ -3,3 +3,18 @@ canvas{
     margin-left: auto;
     margin-right: auto;
     }
+
+#heat_flow{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    }
+
+#path_finder_form
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;  
+}

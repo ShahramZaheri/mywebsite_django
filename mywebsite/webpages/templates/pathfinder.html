@@ -9,13 +9,22 @@
         cities, which is calculated using latitude and longitude of the cities, is used to compute the heuristic
         values in the A* search.
     </p>
-        <form method="post">
+    <div class="form-group col-md-12 m-auto">
+        <form method="post" id="path_finder_form">
             {% csrf_token %}  
             {{form.as_p}}
             <input type="submit" value="Find the Path" class="btn btn-primary">
         </form>
-        <p class="mt-2">{{msg}}</p>
-        <p class="mb-2">{{cities}}</p>
-        <iframe src="https://www.google.com/maps/d/embed?mid=18d07yeRvfrhbOs6u3I4RHFlxBEN6imsw" width="640" height="480"></iframe>
+    
+    <p class="text-center">{{msg}}</p>
+    <p class="text-center">{{cities}}</p>
+
+    <div class="d-flex justify-content-center">
+        <iframe src="https://www.google.com/maps/d/embed?mid=18d07yeRvfrhbOs6u3I4RHFlxBEN6imsw" width="640"
+    height="480"></iframe>
+    </div>
+    
+    
+        
 {%endblock content%}
         
